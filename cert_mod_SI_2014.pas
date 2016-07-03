@@ -3,13 +3,14 @@ uses crt;
 var
 entrada,salida,pregunta,pal,sin,lim,sin2,signi : string;
 bus,bus_dp,h,sinp,bus_ig,i,q,q2,es,es2,k,cont,w,bus_sl : byte;
+fin : byte;
 
 
 procedure limpiador;
   begin
     q:=pos(pregunta,entrada);
-    q:=q - 1;
-   { lim:=delete(entrada,1,q);}
+    q:=q - 2;
+    delete(entrada,1,q);
   end;
 
 procedure busqueda;
@@ -74,6 +75,7 @@ procedure significado;
 
 
 begin
+repeat
   clrscr;
   entrada:='';
   salida:='';
@@ -84,6 +86,7 @@ begin
 
   writeln('Ingrese palabra que desea buscar');
   readln(pregunta);
+  limpiador;
 
   entrada[1]:='*';
   busqueda;
@@ -96,6 +99,14 @@ begin
   writeln('Sinonimos: ');
   sinonimos;
   readln();
+
+  writeln('Si desea buscar otra palabra escriba 1 sino escriba 0');
+  readln(fin);
+
+
+
+
+until (fin=0);
 
 
 end.
